@@ -1,0 +1,38 @@
+import React, { Component } from "react";
+import "./styles.css";
+import { render } from "react-dom";
+
+export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      count: 0
+    };
+  }
+  handleCrementer = increment => {
+    this.setState({
+      count: this.state.count + increment
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <div>
+          <h2
+            style={{
+              fontSize: `${
+                this.state.count === 0 ? "normal" : this.state.count
+              }px`
+            }}
+          >
+            {this.state.count}
+          </h2>
+          <button onClick={() => this.handleCrementer(1)}>add</button>
+          <button onClick={() => this.handleCrementer(-1)}>sub</button>
+        </div>
+      </div>
+    );
+  }
+}
